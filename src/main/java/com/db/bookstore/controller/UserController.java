@@ -1,7 +1,6 @@
 package com.db.bookstore.controller;
 
 import com.db.bookstore.model.User;
-
 import com.db.bookstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,48 +17,41 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/register")
-    public ModelAndView getRegisterForm(){
+    public ModelAndView getRegisterForm() {
         ModelAndView modelAndView = new ModelAndView("register-form");
         return modelAndView;
     }
 
     @PostMapping("/register")
-    public ModelAndView addUser(User user){
+    public ModelAndView addUser(User user) {
         userService.insertUser(user);
         ModelAndView modelAndView = new ModelAndView("redirect:/login");
         return modelAndView;
     }
 
     @GetMapping("/login")
-    public ModelAndView getLoginForm(){
+    public ModelAndView getLoginForm() {
         ModelAndView modelAndView = new ModelAndView("login-form");
         return modelAndView;
     }
 
     @PostMapping("/login")
-    public ModelAndView verifyUser(User user, HttpServletResponse response){
+    public ModelAndView verifyUser(User user, HttpServletResponse response) {
         try {
             User user1 = userService.findByUsernameOrEmailAndPassword(user);
             response.addCookie(new Cookie("id", "" + user1.getId()));
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
         ModelAndView modelAndView = new ModelAndView("redirect:/dashboard");
-
         return modelAndView;
-
-
-
     }
 
     @GetMapping("/dashboard")
-    public ModelAndView getDashBoard(){
-        ModelAndView modelAndView=new ModelAndView("dashboard");
-        modelAndView.addObject("bookList","");
+    public ModelAndView getDashBoard() {
+        ModelAndView modelAndView = new ModelAndView("dashboard");
+        modelAndView.addObject("bookList", "");
         return modelAndView;
     }
-
-
-
 }
