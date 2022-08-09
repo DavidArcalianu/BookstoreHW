@@ -24,6 +24,7 @@ public class UserController {
 
     @PostMapping("/register")
     public ModelAndView addUser(User user) {
+        user.setRole("client");
         userService.insertUser(user);
         ModelAndView modelAndView = new ModelAndView("redirect:/login");
         return modelAndView;
