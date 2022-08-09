@@ -21,5 +21,4 @@ public class Book {
     private Set<Author> authorList;
     private int pages;
     private String publisher;
-
 }
