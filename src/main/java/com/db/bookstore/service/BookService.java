@@ -12,6 +12,10 @@ public class BookService {
     @Autowired
     BookRepository bookRepository;
 
+    public void insertBook(Book book) {
+        bookRepository.save(book);
+    }
+
     public List<Book> getAll() {
         return (List<Book>) bookRepository.findAll();
     }

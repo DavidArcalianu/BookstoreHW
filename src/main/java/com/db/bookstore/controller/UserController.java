@@ -75,4 +75,23 @@ public class UserController {
 
         return modelAndView;
     }
+
+    @PostMapping("/dashboard")
+    public ModelAndView dashBoard() {
+        ModelAndView modelAndView = new ModelAndView("redirect:/add-book");
+        return modelAndView;
+    }
+
+    @GetMapping("/add-book")
+    public ModelAndView getAddBookForm() {
+        ModelAndView modelAndView = new ModelAndView("add-book-form");
+        return modelAndView;
+    }
+
+    @PostMapping("/add-book")
+    public ModelAndView addBook(Book book) {
+        bookService.insertBook(book);
+        ModelAndView modelAndView = new ModelAndView("redirect:/dashboard");
+        return modelAndView;
+    }
 }

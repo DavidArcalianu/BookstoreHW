@@ -1,5 +1,6 @@
 package com.db.bookstore.service;
 
+import com.db.bookstore.model.Book;
 import com.db.bookstore.model.User;
 import com.db.bookstore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,6 @@ public class UserService {
     }
 
     public User findById(int id) {
-        User user = userRepository.findById(id);
-        return user;
+        return userRepository.findById(id);
     }
 }
