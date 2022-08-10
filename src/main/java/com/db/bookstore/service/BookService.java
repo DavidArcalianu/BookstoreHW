@@ -17,6 +17,6 @@ public class BookService {
     }
 
     public List<Book> getAll() {
-        return (List<Book>) bookRepository.findAll();
+        return bookRepository.findAll();
     }
 }

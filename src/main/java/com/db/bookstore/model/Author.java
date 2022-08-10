@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Setter
 public class Author {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private int birthYear;

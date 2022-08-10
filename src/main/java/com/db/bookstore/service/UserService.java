@@ -1,6 +1,5 @@
 package com.db.bookstore.service;
 
-import com.db.bookstore.model.Book;
 import com.db.bookstore.model.User;
 import com.db.bookstore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

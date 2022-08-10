@@ -15,7 +15,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-
 @Controller
 public class UserController {
     @Autowired
@@ -83,8 +82,19 @@ public class UserController {
     }
 
     @GetMapping("/add-book")
-    public ModelAndView getAddBookForm() {
+    public ModelAndView getAddBookForm(@CookieValue int id) {
         ModelAndView modelAndView = new ModelAndView("add-book-form");
+
+        try {
+            User user = userService.findById(id);
+//            if (user.getRole() != "admin") {
+//                return null;
+//            }
+            modelAndView.addObject("user", user);
+        } catch (Exception e) {
+            e.getMessage();
+        }
+
         return modelAndView;
     }
 
